@@ -41,36 +41,12 @@ img.onload = () => {
   analyzeImageColors();
 };
 
-
-function makeReddish() {
-  const image = new ImageJS(document.getElementById("image_2"));
-
-  // Get image data (library specific function)
-  const imageData = image.getImageData();
-
-  // Loop through pixels and adjust red value (limited approach)
-  for (let i = 0; i < imageData.data.length; i += 4) {
-    // Increase red value slightly, clamp to prevent overflow (0-255)
-    imageData.data[i] = Math.min(255, imageData.data[i] + 20);
-  }
-
-  // Update image source with modified data (might not work in all browsers)
-  image.putImageData(imageData);
-  document.getElementById("image_2").src = image.toDataURL(); // Corrected ID here
-}
-
-
 function dupli() {
   const originalImage = document.getElementById("duplimage");
   const newImage = originalImage.cloneNode(true); // Create a deep clone
 
-  // Generate a unique ID for the new image (optional)
   newImage.id = originalImage.id + "-duplicate";
-
-  // Find a suitable parent element to insert the new image (optional)
   const parentElement = originalImage.parentElement;
-
-  // Insert the new image after the original image (or adjust as needed)
   parentElement.insertBefore(newImage, originalImage.nextSibling);
 }
 
@@ -78,18 +54,13 @@ function increaseBrightness() {
   const originalImage = document.getElementById("bright");
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
-
-  // Set canvas dimensions to match the image
   canvas.width = originalImage.naturalWidth;
   canvas.height = originalImage.naturalHeight;
 
-  // Draw the original image onto the canvas
   context.drawImage(originalImage, 0, 0);
 
-  // Get image data
   const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
-  // Increase brightness (adjust factor as needed)
   const brightnessFactor = 1.2; // Increase brightness by 20%
   const data = imageData.data;
   for (let i = 0; i < data.length; i += 4) {
@@ -98,48 +69,21 @@ function increaseBrightness() {
     data[i + 2] = Math.min(255, data[i + 2] * brightnessFactor); // Blue
   }
 
-  // Update canvas with modified data
   context.putImageData(imageData, 0, 0);
 
-  // Replace the original image source with the canvas data URL
   originalImage.src = canvas.toDataURL();
 }
 
 
-function reduceResolution() {
-  const originalImage = document.getElementById("reso");
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-
-  // Define the new resolution (adjust width and height as needed)
-  const newWidth = Math.floor(originalImage.naturalWidth / 2);
-  const newHeight = Math.floor(originalImage.naturalHeight / 2);
-
-  // Set canvas dimensions to the new resolution
-  canvas.width = newWidth;
-  canvas.height = newHeight;
-
-  // Draw the original image onto the canvas with scaling
-  context.drawImage(originalImage, 0, 0, originalImage.naturalWidth, originalImage.naturalHeight, 0, 0, newWidth, newHeight);
-
-  // Replace the original image source with the canvas data URL (lower resolution)
-  originalImage.src = canvas.toDataURL();
-}
 
 function createAvatar() {
   const originalImage = document.getElementById("avatar");
   const canvas = document.getElementById("avatarCanvas");
   const context = canvas.getContext("2d");
-
-  // Define the avatar size (adjust width and height as needed)
   const avatarSize = Math.min(canvas.width, canvas.height);
-
-  // Clip a circular region from the original image
   context.beginPath();
   context.arc(avatarSize / 2, avatarSize / 2, avatarSize / 2, 0, 2 * Math.PI);
   context.clip();
-
-  // Draw the original image onto the canvas with scaling and clipping
   context.drawImage(originalImage, 0, 0, originalImage.naturalWidth, originalImage.naturalHeight, 0, 0, avatarSize, avatarSize);
 }
 
@@ -167,34 +111,57 @@ function grayscale() {
       data[i + 2] = grayscale; // Blue channel
   }
 
-  // Put the modified image data back onto the canvas
   ctx.putImageData(imageData, 0, 0);
-
-  // Replace the original image with the grayscale version
   image.src = canvas.toDataURL();
 }
-// Function to generate QR code
-function qrgeneration() {
-  const qrCanvas = document.createElement("canvas");
 
-  // Set canvas dimensions
-  qrCanvas.width = 200;
-  qrCanvas.height = 200;
+function changeColor(imageElement, toColor) {
 
-  // Generate QR code
-  const qrCode = new QRCode(qrCanvas, {
-      text: "https://example.com", // Example URL to encode in the QR code
-      width: 200,
-      height: 200,
-  });
+  // Create the canvas element
+  var canvas = document.createElement('canvas');
+  var context = canvas.getContext('2d');
 
-  // Convert the QR code canvas to base64 data URL
-  const qrDataURL = qrCanvas.toDataURL();
+  height = canvas.height = imageElement.naturalHeight || imageElement.offsetHeight || imageElement.height;
+  width = canvas.width = imageElement.naturalWidth || imageElement.offsetWidth || imageElement.width;
 
-  // Get the image element with the ID 'qr'
-  const qrImage = document.getElementById("qr");
 
-  // Set the 'src' attribute of the image to the generated QR code data URL
-  qrImage.src = qrDataURL;
+  context.drawImage(imageElement, 0, 0);
+
+  imageElement.crossOrigin = "anonymous";
+  imgData = context.getImageData(
+              0, 0, width, height);
+
+  length = imgData.data.length;
+
+  for (var i = 0; i < length; i += 4) {
+      if(toColor == 'red'){
+          imgData.data[i] = imgData.data[i+1] + imgData.data[i+2];
+      }
+      else if(toColor == 'green'){
+          imgData.data[i+1] = imgData.data[i] + imgData.data[i+2];
+      }
+      else{
+          imgData.data[i+2] = imgData.data[i] + imgData.data[i+1];
+      }
+
+
+  }
+
+  context.putImageData(imgData, 0, 0);
+  imageElement.src = canvas.toDataURL();
 }
+function resolution(imageElement) {
 
+  var img = document.getElementById(imageElement);
+  var canvas = document.createElement('canvas');
+  var context = canvas.getContext('2d');
+  const scaleFactor = 0.9;
+
+  canvas.width = img.width * scaleFactor;
+  canvas.height = img.height * scaleFactor;
+
+  context.drawImage(img, 0, 0, canvas.width, canvas.height);
+  img.crossOrigin = "anonymous";
+  const reducedImageDataURL = canvas.toDataURL('image/jpeg', 0.2);
+  img.src = reducedImageDataURL;
+}
