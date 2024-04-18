@@ -27,7 +27,7 @@ body {
                 url("https://i.imgur.com/TAn6FWz.jpg") center center fixed;
     background-size: cover;
     text-align: center;
-    height: 100vh; 
+    height: 90vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,15 +91,15 @@ nav ul li a {
 
 .project {
     width: 200px;
-    height: 200px;
-    border: 1px solid #171717;
+    height: 0px;
+    border: 0px solid #171717;
     margin: 10px;
     display: inline-block;
     line-height: 200px;
 }
 
 #contact {
-    background-color: #ffbc4b; 
+    background-color: #a2f1d2; 
     padding: 15px;
     border-radius: 0.5%;
     text-align: center;
@@ -145,4 +145,31 @@ a:hover {
         width: 50%; 
         margin: 0 auto; 
     }
+}
+#portfolio {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.project {
+    display: inline-block;
+    margin: 20px;
+}
+
+.project img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project img:hover {
+    transform: scale(1.1);
+}
+
+.project p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }

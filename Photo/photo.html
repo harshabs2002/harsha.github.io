@@ -71,6 +71,9 @@
     .row:not(:last-child) {
             margin-bottom: 20px;
         }
+        .btn-custom-width {
+        width: 150px; /* Adjust the width as needed */
+    }
 
   </style>
 </head>
@@ -107,7 +110,7 @@
       <div class="row">
           <div class="col-md-4 mb-3">
               <img src="imag6.jpeg" alt="Image 1" class="img-thumbnail" id="image_1">
-              <button type="button" class="btn btn-primary btn-block mt-2" id="checkColor">Check Color</button>
+              <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" id="checkColor">Check Color</button>
               <p id="result" class="text-center mt-2"></p>
           </div>
           
@@ -115,7 +118,7 @@
               <img src="imag7.jpeg" alt="Image 2" class="img-thumbnail" id="image_2">
               
                   
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="changeColor(document.getElementById('image_2'), 'red')">Make it Reddish</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2'), 'red')">Make it Reddish</button>
                   
               
           </div>
@@ -124,7 +127,7 @@
               <img src="img9.jpeg" alt="Image 2" class="img-thumbnail" id="image_2_1">
               
                  
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="changeColor(document.getElementById('image_2_1'), 'blue')">Make it Blueish</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2_1'), 'blue')">Make it Blueish</button>
                  
               
           </div>
@@ -132,29 +135,29 @@
           <div class="col-md-4 mb-3">
               <img src="img10.jpeg" alt="Image 2" class="img-thumbnail" id="image_2_2">
               
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="changeColor(document.getElementById('image_2_2'), 'green')">Make it Greenish</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2_2'), 'green')">Make it Greenish</button>
                   
               
           </div>
              
             <div class="col-md-4 mb-4">
                 <img src="imag8.jpeg" alt="Image 3" class="img-thumbnail" id="duplimage">
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="dupli()">Duplicate</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="dupli()">Duplicate</button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-4 mb-4">
                 <img src="img1.jpeg" alt="Image 4" class="img-thumbnail" id="bright">
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="increaseBrightness()">Increase Brightness</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="increaseBrightness()">Increase Brightness</button>
             </div>
             <div class="col-md-4 mb-4">
                 <img src="img2.jpeg" alt="Image 5" class="img-thumbnail" id="reso">
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="resolution('reso')">Reduce Resolution</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="resolution('reso')">Reduce Resolution</button>
             </div>
             <div class="col-md-4 mb-4">
                 <img src="img3.jpeg" alt="Image 6" class="img-thumbnail" id="avatar">
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="createAvatar()">Create Avatar</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="createAvatar()">Create Avatar</button>
                 <canvas id="avatarCanvas" width="200" height="200"></canvas>
             </div>
         </div>
@@ -162,12 +165,12 @@
         <div class="row">
             <div class="col-md-4 mb-4">
                 <img src="img4.jpeg" alt="Image 7" class="img-thumbnail" id="grayscale">
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="grayscale()">Grayscale</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="grayscale()">Grayscale</button>
             </div>
             <div class="col-md-4 mb-4">
                 <img src="img5.jpeg" alt="Image 8" class="img-thumbnail" id="qr">
                 <div id="canvas5" class="canvas"></div>
-                <button type="button" class="btn btn-primary btn-block mt-2" onclick="generateQR('img5.jpeg', 'canvas5')">QR generation</button>
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="generateQR('img5.jpeg', 'canvas5')">QR generation</button>
             </div>
         </div>
     </section>
