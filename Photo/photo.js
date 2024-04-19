@@ -165,3 +165,15 @@ function resolution(imageElement) {
   const reducedImageDataURL = canvas.toDataURL('image/jpeg', 0.2);
   img.src = reducedImageDataURL;
 }
+function generateQR(imagePath, canvasId) {
+  const qrCode = new QRCodeStyling({
+    width: 170,
+    height: 170,
+    type: "svg",
+    data: imagePath,
+  });
+
+  const canvas = document.getElementById(canvasId);
+  canvas.innerHTML = ""; // Clear previous QR code
+  qrCode.append(canvas); // Display QR code for the image path
+}

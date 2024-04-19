@@ -113,44 +113,39 @@
               <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" id="checkColor">Check Color</button>
               <p id="result" class="text-center mt-2"></p>
           </div>
-          
+          <div class="col-md-4 mb-4">
+            <img src="img1.jpeg" alt="Image 4" class="img-thumbnail" id="bright">
+            <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="increaseBrightness()">Increase Brightness</button>
+          </div>
           <div class="col-md-4 mb-3">
-              <img src="imag7.jpeg" alt="Image 2" class="img-thumbnail" id="image_2">
-              
-                  
-                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2'), 'red')">Make it Reddish</button>
-                  
-              
+          <img src="img9.jpeg" alt="Image 2" class="img-thumbnail" id="image_2_1"> 
+           <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2_1'), 'blue')">Make it Blueish</button>
+          </div>
+          
+      
+          <div class="col-md-4 mb-3">
+            <img src="img10.jpeg" alt="Image 2" class="img-thumbnail" id="image_2_2">
+        
+          <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2_2'), 'green')">Make it Greenish</button>  
           </div>
           
           <div class="col-md-4 mb-3">
-              <img src="img9.jpeg" alt="Image 2" class="img-thumbnail" id="image_2_1">
-              
-                 
-                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2_1'), 'blue')">Make it Blueish</button>
-                 
-              
+              <img src="imag7.jpeg" alt="Image 2" class="img-thumbnail" id="image_2">      
+                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2'), 'red')">Make it Reddish</button>    
           </div>
           
-          <div class="col-md-4 mb-3">
-              <img src="img10.jpeg" alt="Image 2" class="img-thumbnail" id="image_2_2">
-              
-                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="changeColor(document.getElementById('image_2_2'), 'green')">Make it Greenish</button>
-                  
-              
-          </div>
+          
+         
              
             <div class="col-md-4 mb-4">
                 <img src="imag8.jpeg" alt="Image 3" class="img-thumbnail" id="duplimage">
                 <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="dupli()">Duplicate</button>
             </div>
-        </div>
+            
+        
 
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <img src="img1.jpeg" alt="Image 4" class="img-thumbnail" id="bright">
-                <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="increaseBrightness()">Increase Brightness</button>
-            </div>
+
+            
             <div class="col-md-4 mb-4">
                 <img src="img2.jpeg" alt="Image 5" class="img-thumbnail" id="reso">
                 <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="resolution('reso')">Reduce Resolution</button>
@@ -160,9 +155,9 @@
                 <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="createAvatar()">Create Avatar</button>
                 <canvas id="avatarCanvas" width="200" height="200"></canvas>
             </div>
-        </div>
+        
 
-        <div class="row">
+        
             <div class="col-md-4 mb-4">
                 <img src="img4.jpeg" alt="Image 7" class="img-thumbnail" id="grayscale">
                 <button type="button" class="btn btn-primary btn-block btn-custom-width mt-2" onclick="grayscale()">Grayscale</button>
@@ -182,19 +177,6 @@
     </footer>
 
     <script src="photo.js"></script>
-    <script type="text/javascript">
-      function generateQR(imagePath, canvasId) {
-        const qrCode = new QRCodeStyling({
-          width: 170,
-          height: 170,
-          type: "svg",
-          data: imagePath,
-        });
     
-        const canvas = document.getElementById(canvasId);
-        canvas.innerHTML = ""; // Clear previous QR code
-        qrCode.append(canvas); // Display QR code for the image path
-      }
-    </script>
 </body>
 </html>
